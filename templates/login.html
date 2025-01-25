@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Control de Gastos</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 0 auto; padding: 20px; }
+        .form { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .error { color: red; }
+        .success { color: green; }
+        input, button { margin: 5px 0; padding: 5px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Contraseña">
+        <button onclick="login()">Entrar</button>
+        <div id="loginMessage"></div>
+    </div>
+
+    <div class="form">
+        <h2>Registro</h2>
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="text" id="regUsername" placeholder="Nombre de usuario">
+        <input type="password" id="regPassword" placeholder="Contraseña">
+        <button onclick="register()">Registrar</button>
+        <div id="regMessage"></div>
+    </div>
+
+    <script>
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    const data = await response.json();
+                    document.getElementById('loginMessage').className = 'error';
+                    document.getElementById('loginMessage').textContent = data.error;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function register() {
+            const email = document.getElementById('regEmail').value;
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, username, password })
+                });
+                
+                const data = await response.json();
+                const messageDiv = document.getElementById('regMessage');
+                
+                if (response.ok) {
+                    messageDiv.className = 'success';
+                    messageDiv.textContent = data.message;
+                } else {
+                    messageDiv.className = 'error';
+                    messageDiv.textContent = data.error;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html> 

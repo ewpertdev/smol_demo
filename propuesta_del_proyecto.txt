@@ -1,0 +1,162 @@
+Tareas:
+1. Un diagrama de casos de uso (al menos una lista de funcionalidades)
+2. Una planificación por meses aproximada (El viernes os enseñaré a hacer un diagrama de Gantt)
+3. Tecnologías a usar
+
+Lista de funcionalidades:
+
+1. Crear cuenta de usuario e iniciar sesión
+Qué es: Permite que los usuarios creen una cuenta con su correo electrónico y contraseña para acceder a la aplicación. También incluye la funcionalidad de inicio de sesión.
+Por qué es importante: Es esencial para que cada usuario tenga su espacio personal en la app y pueda vincularse a un grupo específico. Esto garantiza que los datos estén protegidos y personalizados.
+
+
+2. Crear y gestionar grupos de gastos compartidos
+Qué es: Los usuarios pueden crear grupos (por ejemplo, "Piso Calle Luna") e invitar a otros miembros a unirse.
+Por qué es importante: Facilita la organización, ya que cada grupo representa un conjunto de personas que comparten gastos. Esto permite que la app sea utilizada por personas en diferentes pisos o contextos.
+
+
+3. Escaneo de facturas (con OCR)
+Qué es: Utiliza tecnología OCR para extraer automáticamente los datos de las facturas, como montos y conceptos (por ejemplo, "Supermercado, 45.30€").
+Por qué es importante: Automatiza la introducción de datos, ahorrando tiempo y reduciendo errores. Los usuarios solo tienen que escanear la factura en lugar de escribir cada detalle manualmente.
+
+
+
+
+
+
+4. División automática de gastos
+Qué es: Después de escanear una factura, la app divide automáticamente los costos según reglas predefinidas:
+División equitativa: Todos pagan la misma cantidad.
+División personalizada: Algunos pagan más o menos según lo que consumieron.
+Por qué es importante: Resuelve el principal problema de los gastos compartidos: calcular cuánto debe pagar cada persona de forma rápida y justa.
+
+
+5. Asignación de colores para cada usuario
+Qué es: Cada miembro de un grupo puede elegir un color distintivo, y la app usa ese color para resaltar sus datos e importes en las pantallas de balance y resumen.
+Por qué es importante: Hace que la información sea fácil de identificar visualmente, especialmente en grupos grandes. Además, es una forma intuitiva de representar a los usuarios.
+
+
+6. Configuración de gastos recurrentes
+Qué es: Permite configurar gastos que se repiten cada mes (por ejemplo, alquiler, electricidad, internet). La app los registra automáticamente en la fecha seleccionada.
+Por qué es importante: Ahorra tiempo al no tener que añadir manualmente los mismos gastos todos los meses. También ayuda a mantener un seguimiento constante de los pagos más importantes.
+
+
+7. Historial detallado de gastos
+Qué es: Los usuarios pueden acceder a un registro completo de todos los gastos, con filtros por categorías como "Alimentación", "Servicios" u "Ocio".
+Por qué es importante: Proporciona transparencia y permite a los usuarios analizar cómo se están gastando los recursos del grupo.
+
+
+
+
+8. Notificaciones y recordatorios
+Qué es:
+Notificaciones: La app envía alertas cuando hay un gasto nuevo, alguien ha pagado o queda un pago pendiente.
+Recordatorios: Se envían antes de la fecha límite para que todos paguen a tiempo.
+Por qué es importante: Ayuda a que los usuarios no se olviden de los pagos, evitando conflictos o retrasos en los gastos compartidos.
+
+
+9. Sincronización en tiempo real
+Qué es: Cualquier cambio (como un gasto añadido o un pago realizado) se actualiza automáticamente para todos los miembros del grupo, sin necesidad de refrescar la app.
+Por qué es importante: Garantiza que todos los usuarios vean la misma información en tiempo real, mejorando la experiencia colaborativa.
+
+
+10. Gráficos de balance (opcional, pero útil)
+Qué es: Muestra gráficos que resumen los gastos, como cuánto ha pagado cada miembro o en qué se gasta más (alimentación, ocio, etc.).
+Por qué es importante: Proporciona una representación visual de los datos, lo que facilita entender el estado de los gastos de un vistazo.
+
+
+11. Opciones de pago (opcional, mejora avanzada)
+Qué es: Integración con plataformas como PayPal o Bizum para que los usuarios puedan saldar deudas directamente desde la app.
+Por qué es importante: Aunque no es esencial, añadir esta funcionalidad mejora la conveniencia y hace que la app sea más atractiva para los usuarios.
+
+
+
+
+
+
+
+
+Tecnologías a Usar
+Frontend: Flutter
+Qué es: Flutter es un framework de desarrollo multiplataforma creado por Google que permite construir aplicaciones móviles (Android e iOS) con una única base de código.
+Por qué usarlo:
+Eficiencia: Al usar Flutter, solo necesitas escribir el código una vez para que funcione en ambos sistemas operativos.
+Interfaz moderna: Ofrece herramientas como widgets personalizables para diseñar una interfaz atractiva y responsiva.
+Comunidad activa: Existe una gran cantidad de recursos gratuitos para aprender y resolver problemas.
+Cómo se usará en el proyecto:
+Diseño de pantallas de usuario: Registro, inicio de sesión, grupos, historial de gastos, gráficos.
+Interacciones dinámicas: Cambios visuales al seleccionar colores o al agregar gastos.
+Backend: Python con Flask
+Qué es: Flask es un framework de desarrollo web en Python que es ligero, flexible y fácil de usar.
+Por qué usarlo:
+Simplicidad: Es ideal para proyectos que no requieren un backend muy complejo.
+Compatibilidad: Integrar Flask con bases de datos (como MySQL) y servicios externos (como Tesseract) es sencillo.
+Velocidad de desarrollo: Permite crear y probar rápidamente la lógica del servidor.
+Cómo se usará en el proyecto:
+Manejo de usuarios: Registro, inicio de sesión y autenticación.
+Gestión de datos: Creación, actualización y consulta de información de gastos, grupos y usuarios.
+Comunicación con el frontend: Flask enviará y recibirá datos mediante APIs RESTful.
+Base de Datos: MySQL
+Qué es: MySQL es un sistema de gestión de bases de datos relacional ampliamente utilizado.
+Por qué usarlo:
+Estructura clara: Ideal para manejar datos relacionados, como usuarios, gastos y grupos.
+Fácil integración: Se conecta fácilmente con Flask utilizando bibliotecas como SQLAlchemy.
+Conocimientos previos: Ya tienes experiencia trabajando con bases de datos SQL.
+Cómo se usará en el proyecto:
+Tablas principales:
+Usuarios: Datos de inicio de sesión y configuraciones personales.
+Grupos: Información sobre los pisos compartidos.
+Gastos: Detalles de cada gasto, incluyendo montos, fechas y usuarios relacionados.
+Categorías: Alimentación, ocio, servicios, etc.
+Consultas frecuentes:
+Mostrar el historial de gastos.
+Calcular cuánto debe cada usuario.
+OCR: Tesseract o Google Vision API
+Qué es:
+Tesseract OCR: Una herramienta de reconocimiento óptico de caracteres (OCR) gratuita y open-source.
+Google Vision API: Un servicio de Google que analiza imágenes para extraer texto y otra información.
+Por qué usarlo:
+Tesseract:
+Gratuito y sin limitaciones en su uso.
+Puedes ejecutarlo localmente sin necesidad de una conexión a internet.
+Google Vision API:
+Fácil de implementar y muy preciso.
+Tiene un nivel gratuito suficiente para un proyecto pequeño.
+Cómo se usará en el proyecto:
+Los usuarios podrán tomar una foto de una factura.
+El OCR extraerá montos y conceptos.
+Estos datos se procesarán en el backend para asignarlos automáticamente a los usuarios correspondientes.
+
+
+
+
+Infraestructura de Despliegue: Heroku
+Qué es: Heroku es una plataforma en la nube que permite alojar aplicaciones web y bases de datos.
+Por qué usarlo:
+Gratuito para proyectos pequeños: Ideal para desarrollar y probar aplicaciones sin costo inicial.
+Fácil configuración: Puedes desplegar tu backend Flask en minutos.
+Compatibilidad: Soporta Python y MySQL.
+Cómo se usará en el proyecto:
+Alojar la lógica del backend.
+Proporcionar una API accesible al frontend para manejar datos en tiempo real.
+Herramientas Adicionales
+Visual Studio Code (VS Code):
+Qué es: Un editor de código ligero pero potente.
+Por qué usarlo: Es gratuito, tiene soporte para Python y Flutter, y cuenta con una amplia variedad de extensiones.
+Git y GitHub:
+Qué es: Herramientas para control de versiones y colaboración.
+Por qué usarlo: Te permitirá guardar tu progreso, colaborar y revertir cambios si algo sale mal.
+Figma:
+Qué es: Una herramienta de diseño y prototipado de interfaces.
+Por qué usarlo: Es intuitivo y gratuito para proyectos individuales. Te ayudará a crear bocetos de las pantallas de la aplicación.
+
+
+Resumen de Integración de Tecnologías
+Frontend (Flutter): Diseñaremos las pantallas y gestionaremos la interacción del usuario.
+Backend (Flask): Manejar la lógica de negocio, como la gestión de usuarios, grupos y gastos.
+Base de datos (MySQL): Guardarás todos los datos estructurados y garantizar su consistencia.
+OCR (Tesseract o Google Vision API): Digitalizar facturas para extraer información automáticamente.
+Despliegue (Heroku): Alojar tu backend para que funcione en tiempo real.
+
+
+
